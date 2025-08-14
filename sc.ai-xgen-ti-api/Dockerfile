@@ -38,6 +38,7 @@ RUN mkdir -p /app/data
 
 EXPOSE 8080
 
+# Remove root from container
 RUN adduser --disabled-password appuser && chown -R appuser /app
 USER appuser
 
