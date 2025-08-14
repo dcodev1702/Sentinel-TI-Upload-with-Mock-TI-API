@@ -1,0 +1,101 @@
+# docker-compose.yml
+# Remove version field as it's obsolete in newer Docker Compose versions
+
+services:
+  # Mock TI API Service (Python container)
+  mock-ti-api:
+    build:
+      context: ./mock-ti-api  # FIXED: Point to mock-ti-api directory
+      dockerfile: Dockerfile
+    container_name: mock-ti-api
+    ports:
+      - "192.168.10.27:8080:8080"
+    environment:
+      - HOST=0.0.0.0
+      - PORT=8080
+      - WORKERS=1
+      - LOG_LEVEL=info
+      - GENERATE_EVERY_SECONDS=10800
+      - GENERATE_ON_START=true
+      - API_KEYS=<COPY_API_KEY_FROM_DOT_ENV_FILE_HERE>
+      - SOURCE_SYSTEM=STEELCAGE.AI X-GEN TI PLATFORM
+      - COLLECTION_TITLE=SC.AI X-GEN Threat Indicators (STIX 2.1)
+      - MIN_COUNT=10
+      - MAX_COUNT=25
+    volumes:
+      - mock-api-data:/app/data
+      - ./mock-ti-api/data:/app/data
+    networks:
+      - backend               # <-- ONLY the internal network (no WAN/LAN)
+    read_only: true
+    tmpfs: ["/tmp"]
+    mem_limit: 512m
+    cpus: 0.5
+    expose:
+      - "8080"
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://127.0.0.1:8080/healthz"]
+      interval: 2m
+      timeout: 20s
+      retries: 3
+      start_period: 30s
+
+  # TI Sync Service - Fetches from Mock API and uploads to Sentinel
+  ti-sync-service:
+    build:
+      context: .  # This uses the Dockerfile in the current directory
+      dockerfile: Dockerfile
+    container_name: ti-sync-service
+    environment:
+      # Sync configuration
+      - SYNC_MODE=Continuous                  # Options: Single, Once, Continuous, Test
+      - INTERVAL_MINUTES=120                  # Sync interval (for Continuous mode)
+      - MOCK_API_URL=http://mock-ti-api:8080  # Using container name for internal network
+      - SHOW_PROGRESS=false                   # Set to true for detailed output
+      - ENV_FILE=/app/config/.env             # Path to mounted .env file
+    volumes:
+      # Mount the .env file with Azure credentials (REQUIRED)
+      - ./.env:/app/config/.env:ro
+      # Mount PowerShell modules (for development/updates)
+      #- ./Invoke-TI2UploadAPI.psm1:/app/modules/Invoke-TI2UploadAPI.psm1:ro
+      #- ./Start-TISyncFromMockAPI.psm1:/app/modules/Start-TISyncFromMockAPI.psm1:ro
+      #- ./TI-Sync-Driver.ps1:/app/TI-Sync-Driver.ps1:ro
+      # Output directory for saved JSON files (Test mode)
+      - ./output:/app/output
+      # Logs directory (optional)
+      - ./logs:/app/logs
+    networks:
+      - ti-network        # to reach lan/wan services
+      - backend           # to reach mock-ti-api by name
+    mem_limit: 1g
+    cpus: 1.0
+    depends_on:
+      mock-ti-api:
+        condition: service_healthy
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://mock-ti-api:8080/healthz"]
+      interval: 6m
+      timeout: 20s
+      retries: 3
+      start_period: 30s
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+networks:
+  backend:
+    driver: bridge
+    internal: true
+  ti-network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.20.0.0/16
+
+volumes:
+  mock-api-data:
+    driver: local
