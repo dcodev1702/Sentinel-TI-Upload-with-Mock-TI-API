@@ -1,0 +1,958 @@
+{
+  "sourcesystem": "STEELCAGE.AI X-GEN TI PLATFORM",
+  "stixobjects": [
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--ff6b744c-2322-422d-9add-b5627a43dab8",
+      "created": "2025-08-14T21:05:46.015940Z",
+      "modified": "2025-08-14T21:05:46.015940Z",
+      "name": "APT28",
+      "source": "STEELCAGE.AI",
+      "description": "Threat actor group APT28 - Known for sophisticated cyber operations",
+      "identity_class": "group",
+      "pattern": "[identity:name = 'APT28']",
+      "pattern_type": "stix",
+      "valid_from": "2025-08-12T13:05:46.015940Z"
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--511eeac0-a1b7-489c-af46-43650349d65f",
+      "created": "2025-08-14T21:05:46.015940Z",
+      "modified": "2025-08-14T21:05:46.015940Z",
+      "name": "APT29",
+      "source": "STEELCAGE.AI",
+      "description": "Threat actor group APT29 - Known for sophisticated cyber operations",
+      "identity_class": "group",
+      "pattern": "[identity:name = 'APT29']",
+      "pattern_type": "stix",
+      "valid_from": "2025-08-12T13:05:46.015940Z"
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--1b74ef37-134b-4366-9beb-d7889496cdfb",
+      "created": "2025-08-14T21:05:46.015940Z",
+      "modified": "2025-08-14T21:05:46.015940Z",
+      "name": "Lazarus",
+      "source": "STEELCAGE.AI",
+      "description": "Threat actor group Lazarus - Known for sophisticated cyber operations",
+      "identity_class": "group",
+      "pattern": "[identity:name = 'Lazarus']",
+      "pattern_type": "stix",
+      "valid_from": "2025-08-12T13:05:46.015940Z"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--6b155b60-3d13-4bb7-9aa1-039cfc8637de",
+      "source": "STEELCAGE.AI",
+      "created": "2025-08-14T21:05:46.015940Z",
+      "modified": "2025-08-14T21:05:46.015940Z",
+      "valid_from": "2025-08-12T13:05:46.015940Z",
+      "pattern_type": "stix",
+      "labels": [
+        "malicious-activity"
+      ],
+      "confidence": 91,
+      "pattern": "[url:value = 'https://c2-info613.org/cmd/exec?session=gIssYQNj']",
+      "name": "Malicious URL - TrickBot",
+      "description": "URL serving TrickBot payload attributed to OilRig campaign.",
+      "kill_chain_phases": [
+        {
+          "kill_chain_name": "lockheed-martin-cyber-kill-chain",
+          "phase_name": "delivery"
+        },
+        {
+          "kill_chain_name": "lockheed-martin-cyber-kill-chain",
+          "phase_name": "exploitation"
+        }
+      ]
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--9ffd5a8e-927f-438c-9119-35311fb4c7a4",
+      "source": "STEELCAGE.AI",
+      "created": "2025-08-14T21:05:46.015940Z",
+      "modified": "2025-08-14T21:05:46.015940Z",
+      "valid_from": "2025-08-12T13:05:46.015940Z",
+      "pattern_type": "stix",
+      "labels": [
+        "malicious-activity"
+      ],
+      "confidence": 60,
+      "pattern": "[domain-name:value = 'viper-metrics453.info']",
+      "name": "Malicious Domain - Cobalt Strike",
+      "description": "Domain used by Cobalt Strike infrastructure attributed to threat actor: APT29.",
+      "kill_chain_phases": [
+        {
+          "kill_chain_name": "lockheed-martin-cyber-kill-chain",
+          "phase_name": "command-and-control"
+        },
+        {
+          "kill_chain_name": "lockheed-martin-cyber-kill-chain",
+          "phase_name": "installation"
+        }
+      ]
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--f873b338-961e-4e93-9e7c-65c346dbb469",
+      "source": "STEELCAGE.AI",
+      "created": "2025-08-14T21:05:46.015940Z",
+      "modified": "2025-08-14T21:05:46.015940Z",
+      "valid_from": "2025-08-12T13:05:46.015940Z",
+      "pattern_type": "stix",
+      "labels": [
+        "malicious-activity"
+      ],
+      "confidence": 74,
+      "pattern": "[url:value = 'https://viper-download100.biz/file/upload?key=j1EoD8P5']",
+      "name": "Malicious URL - TrickBot",
+      "description": "URL serving TrickBot payload attributed to FIN7 campaign.",
+      "kill_chain_phases": [
+        {
+          "kill_chain_name": "lockheed-martin-cyber-kill-chain",
+          "phase_name": "delivery"
+        },
+        {
+          "kill_chain_name": "lockheed-martin-cyber-kill-chain",
+          "phase_name": "exploitation"
+        }
+      ]
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--ec4aa3da-1aad-4ecc-883d-e2e10ea6d959",
+      "source": "STEELCAGE.AI",
+      "created": "2025-08-14T21:05:46.015940Z",
+      "modified": "2025-08-14T21:05:46.015940Z",
+      "valid_from": "2025-08-12T13:05:46.015940Z",
+      "pattern_type": "stix",
+      "labels": [
+        "malicious-activity"
+      ],
+      "confidence": 76,
+      "pattern": "[file:hashes.MD5 = '0f3057aff8334fbca1999108fc798bd4']",
+      "name": "Malicious File Hash - TrickBot",
+      "description": "MD5 hash of TrickBot variant associated with APT29 operations.",
+      "kill_chain_phases": [
+        {
+          "kill_chain_name": "lockheed-martin-cyber-kill-chain",
+          "phase_name": "weaponization"
+        },
+        {
+          "kill_chain_name": "lockheed-martin-cyber-kill-chain",
+          "phase_name": "delivery"
+        },
+        {
+          "kill_chain_name": "lockheed-martin-cyber-kill-chain",
+          "phase_name": "installation"
+        }
+      ]
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--673a17fd-5a88-4714-b21f-528098cb2a58",
+      "source": "STEELCAGE.AI",
+      "created": "2025-08-14T21:05:46.015940Z",
+      "modified": "2025-08-14T21:05:46.015940Z",
+      "valid_from": "2025-08-12T13:05:46.015940Z",
+      "pattern_type": "stix",
+      "labels": [
+        "malicious-activity"
+      ],
+      "confidence": 84,
+      "pattern": "[file:hashes.MD5 = 'a54456aaea974f5fb00da4138ea91aca']",
+      "name": "Malicious File Hash - TrickBot",
+      "description": "MD5 hash of TrickBot variant associated with DarkHydrus operations.",
+      "kill_chain_phases": [
+        {
+          "kill_chain_name": "lockheed-martin-cyber-kill-chain",
+          "phase_name": "weaponization"
+        },
+        {
+          "kill_chain_name": "lockheed-martin-cyber-kill-chain",
+          "phase_name": "delivery"
+        },
+        {
+          "kill_chain_name": "lockheed-martin-cyber-kill-chain",
+          "phase_name": "installation"
+        }
+      ]
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--3b7c2672-5b7f-4992-8694-f31cc4414812",
+      "source": "STEELCAGE.AI",
+      "created": "2025-08-14T21:05:46.015940Z",
+      "modified": "2025-08-14T21:05:46.015940Z",
+      "valid_from": "2025-08-12T13:05:46.015940Z",
+      "pattern_type": "stix",
+      "labels": [
+        "malicious-activity"
+      ],
+      "confidence": 65,
+      "pattern": "[ipv4-addr:value = '228.241.155.234']",
+      "name": "Malicious IP - Metasploit C2",
+      "description": "IP address associated with Metasploit activity attributed to threat actor: APT29.",
+      "kill_chain_phases": [
+        {
+          "kill_chain_name": "lockheed-martin-cyber-kill-chain",
+          "phase_name": "command-and-control"
+        }
+      ]
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--b378393e-33af-42e0-bdbf-780548f1672d",
+      "source": "STEELCAGE.AI",
+      "created": "2025-08-14T21:05:46.015940Z",
+      "modified": "2025-08-14T21:05:46.015940Z",
+      "valid_from": "2025-08-12T13:05:46.015940Z",
+      "pattern_type": "stix",
+      "labels": [
+        "malicious-activity"
+      ],
+      "confidence": 69,
+      "pattern": "[ipv4-addr:value = '23.15.106.159']",
+      "name": "Malicious IP - Mimikatz C2",
+      "description": "IP address associated with Mimikatz activity attributed to threat actor: APT28.",
+      "kill_chain_phases": [
+        {
+          "kill_chain_name": "lockheed-martin-cyber-kill-chain",
+          "phase_name": "command-and-control"
+        }
+      ]
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--efc875d1-0666-4a04-bc29-03332d223f00",
+      "source": "STEELCAGE.AI",
+      "created": "2025-08-14T21:05:46.015940Z",
+      "modified": "2025-08-14T21:05:46.015940Z",
+      "valid_from": "2025-08-12T13:05:46.015940Z",
+      "pattern_type": "stix",
+      "labels": [
+        "malicious-activity"
+      ],
+      "confidence": 95,
+      "pattern": "[url:value = 'https://cobra-metrics313.net/file/upload']",
+      "name": "Malicious URL - TrickBot",
+      "description": "URL serving TrickBot payload attributed to OilRig campaign.",
+      "kill_chain_phases": [
+        {
+          "kill_chain_name": "lockheed-martin-cyber-kill-chain",
+          "phase_name": "delivery"
+        },
+        {
+          "kill_chain_name": "lockheed-martin-cyber-kill-chain",
+          "phase_name": "exploitation"
+        }
+      ]
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--a4a0810b-db8d-4687-ac91-09d53d210175",
+      "source": "STEELCAGE.AI",
+      "created": "2025-08-14T21:05:46.015940Z",
+      "modified": "2025-08-14T21:05:46.015940Z",
+      "valid_from": "2025-08-12T13:05:46.015940Z",
+      "pattern_type": "stix",
+      "labels": [
+        "malicious-activity"
+      ],
+      "confidence": 80,
+      "pattern": "[url:value = 'https://exploit-info342.net/log/send?token=uesy1Hgg']",
+      "name": "Malicious URL - PsExec",
+      "description": "URL serving PsExec payload attributed to OilRig campaign.",
+      "kill_chain_phases": [
+        {
+          "kill_chain_name": "lockheed-martin-cyber-kill-chain",
+          "phase_name": "delivery"
+        },
+        {
+          "kill_chain_name": "lockheed-martin-cyber-kill-chain",
+          "phase_name": "exploitation"
+        }
+      ]
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--9791747f-6548-4b19-aa50-a5b3030d3497",
+      "source": "STEELCAGE.AI",
+      "created": "2025-08-14T21:05:46.015940Z",
+      "modified": "2025-08-14T21:05:46.015940Z",
+      "valid_from": "2025-08-12T13:05:46.015940Z",
+      "pattern_type": "stix",
+      "labels": [
+        "malicious-activity"
+      ],
+      "confidence": 70,
+      "pattern": "[domain-name:value = 'viper-data381.org']",
+      "name": "Malicious Domain - Qbot",
+      "description": "Domain used by Qbot infrastructure attributed to threat actor: APT28.",
+      "kill_chain_phases": [
+        {
+          "kill_chain_name": "lockheed-martin-cyber-kill-chain",
+          "phase_name": "command-and-control"
+        },
+        {
+          "kill_chain_name": "lockheed-martin-cyber-kill-chain",
+          "phase_name": "installation"
+        }
+      ]
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--1a13a6d5-3c8d-4293-a78f-2cdf12b57790",
+      "source": "STEELCAGE.AI",
+      "created": "2025-08-14T21:05:46.015940Z",
+      "modified": "2025-08-14T21:05:46.015940Z",
+      "valid_from": "2025-08-12T13:05:46.015940Z",
+      "pattern_type": "stix",
+      "labels": [
+        "malicious-activity"
+      ],
+      "confidence": 66,
+      "pattern": "[file:hashes.MD5 = 'b7aca3a0cbc647cda6772231990e7260']",
+      "name": "Malicious File Hash - PsExec",
+      "description": "MD5 hash of PsExec variant associated with Carbanak operations.",
+      "kill_chain_phases": [
+        {
+          "kill_chain_name": "lockheed-martin-cyber-kill-chain",
+          "phase_name": "weaponization"
+        },
+        {
+          "kill_chain_name": "lockheed-martin-cyber-kill-chain",
+          "phase_name": "delivery"
+        },
+        {
+          "kill_chain_name": "lockheed-martin-cyber-kill-chain",
+          "phase_name": "installation"
+        }
+      ]
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--6cd31007-fb1c-4bd9-8c83-0a5a6315fbc5",
+      "source": "STEELCAGE.AI",
+      "created": "2025-08-14T21:05:46.015940Z",
+      "modified": "2025-08-14T21:05:46.015940Z",
+      "valid_from": "2025-08-12T13:05:46.015940Z",
+      "pattern_type": "stix",
+      "labels": [
+        "malicious-activity"
+      ],
+      "confidence": 93,
+      "pattern": "[ipv4-addr:value = '231.177.197.62']",
+      "name": "Malicious IP - TrickBot C2",
+      "description": "IP address associated with TrickBot activity attributed to threat actor: FIN7.",
+      "kill_chain_phases": [
+        {
+          "kill_chain_name": "lockheed-martin-cyber-kill-chain",
+          "phase_name": "command-and-control"
+        }
+      ]
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--9688a4d8-29c5-4cfd-9e93-df3988858118",
+      "source": "STEELCAGE.AI",
+      "created": "2025-08-14T21:05:46.015940Z",
+      "modified": "2025-08-14T21:05:46.015940Z",
+      "valid_from": "2025-08-12T13:05:46.015940Z",
+      "pattern_type": "stix",
+      "labels": [
+        "malicious-activity"
+      ],
+      "confidence": 77,
+      "pattern": "[ipv4-addr:value = '103.124.18.149']",
+      "name": "Malicious IP - Qbot C2",
+      "description": "IP address associated with Qbot activity attributed to threat actor: APT29.",
+      "kill_chain_phases": [
+        {
+          "kill_chain_name": "lockheed-martin-cyber-kill-chain",
+          "phase_name": "command-and-control"
+        }
+      ]
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--8a0b2206-361d-419b-a725-bb91f4c45070",
+      "source": "STEELCAGE.AI",
+      "created": "2025-08-14T21:05:46.015940Z",
+      "modified": "2025-08-14T21:05:46.015940Z",
+      "valid_from": "2025-08-12T13:05:46.015940Z",
+      "pattern_type": "stix",
+      "labels": [
+        "malicious-activity"
+      ],
+      "confidence": 72,
+      "pattern": "[domain-name:value = 'dropper-data543.io']",
+      "name": "Malicious Domain - Empire",
+      "description": "Domain used by Empire infrastructure attributed to threat actor: DarkHydrus.",
+      "kill_chain_phases": [
+        {
+          "kill_chain_name": "lockheed-martin-cyber-kill-chain",
+          "phase_name": "command-and-control"
+        },
+        {
+          "kill_chain_name": "lockheed-martin-cyber-kill-chain",
+          "phase_name": "installation"
+        }
+      ]
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--164aeadf-ea55-4d53-900d-8f1b62c52bf0",
+      "source": "STEELCAGE.AI",
+      "created": "2025-08-14T21:05:46.015940Z",
+      "modified": "2025-08-14T21:05:46.015940Z",
+      "valid_from": "2025-08-12T13:05:46.015940Z",
+      "pattern_type": "stix",
+      "labels": [
+        "malicious-activity"
+      ],
+      "confidence": 63,
+      "pattern": "[ipv4-addr:value = '4.3.29.202']",
+      "name": "Malicious IP - Qbot C2",
+      "description": "IP address associated with Qbot activity attributed to threat actor: Carbanak.",
+      "kill_chain_phases": [
+        {
+          "kill_chain_name": "lockheed-martin-cyber-kill-chain",
+          "phase_name": "command-and-control"
+        }
+      ]
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--918f7984-2f3e-428c-8732-1733bfc105d9",
+      "source": "STEELCAGE.AI",
+      "created": "2025-08-14T21:05:46.015940Z",
+      "modified": "2025-08-14T21:05:46.015940Z",
+      "valid_from": "2025-08-12T13:05:46.015940Z",
+      "pattern_type": "stix",
+      "labels": [
+        "malicious-activity"
+      ],
+      "confidence": 83,
+      "pattern": "[file:hashes.MD5 = 'c674ade214424cd6bb1f1f473b160f62']",
+      "name": "Malicious File Hash - Metasploit",
+      "description": "MD5 hash of Metasploit variant associated with OilRig operations.",
+      "kill_chain_phases": [
+        {
+          "kill_chain_name": "lockheed-martin-cyber-kill-chain",
+          "phase_name": "weaponization"
+        },
+        {
+          "kill_chain_name": "lockheed-martin-cyber-kill-chain",
+          "phase_name": "delivery"
+        },
+        {
+          "kill_chain_name": "lockheed-martin-cyber-kill-chain",
+          "phase_name": "installation"
+        }
+      ]
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--e9b81f3d-6956-4b09-b98a-7ca4f024f18d",
+      "source": "STEELCAGE.AI",
+      "created": "2025-08-14T21:05:46.015940Z",
+      "modified": "2025-08-14T21:05:46.015940Z",
+      "valid_from": "2025-08-12T13:05:46.015940Z",
+      "pattern_type": "stix",
+      "labels": [
+        "malicious-activity"
+      ],
+      "confidence": 73,
+      "pattern": "[url:value = 'https://c2-control559.biz/get/info?id=wIJ2LXFO']",
+      "name": "Malicious URL - BloodHound",
+      "description": "URL serving BloodHound payload attributed to Turla campaign.",
+      "kill_chain_phases": [
+        {
+          "kill_chain_name": "lockheed-martin-cyber-kill-chain",
+          "phase_name": "delivery"
+        },
+        {
+          "kill_chain_name": "lockheed-martin-cyber-kill-chain",
+          "phase_name": "exploitation"
+        }
+      ]
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--762550a3-40d2-4e03-8937-6b498e1451dd",
+      "source": "STEELCAGE.AI",
+      "created": "2025-08-14T21:05:46.015940Z",
+      "modified": "2025-08-14T21:05:46.015940Z",
+      "valid_from": "2025-08-12T13:05:46.015940Z",
+      "pattern_type": "stix",
+      "labels": [
+        "malicious-activity"
+      ],
+      "confidence": 70,
+      "pattern": "[file:hashes.MD5 = 'de2968f47d234aee9e147e504057da94']",
+      "name": "Malicious File Hash - Emotet",
+      "description": "MD5 hash of Emotet variant associated with APT28 operations.",
+      "kill_chain_phases": [
+        {
+          "kill_chain_name": "lockheed-martin-cyber-kill-chain",
+          "phase_name": "weaponization"
+        },
+        {
+          "kill_chain_name": "lockheed-martin-cyber-kill-chain",
+          "phase_name": "delivery"
+        },
+        {
+          "kill_chain_name": "lockheed-martin-cyber-kill-chain",
+          "phase_name": "installation"
+        }
+      ]
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--51d08e6f-05e5-4407-9587-93395bd28ee4",
+      "source": "STEELCAGE.AI",
+      "created": "2025-08-14T21:05:46.015940Z",
+      "modified": "2025-08-14T21:05:46.015940Z",
+      "valid_from": "2025-08-12T13:05:46.015940Z",
+      "pattern_type": "stix",
+      "labels": [
+        "malicious-activity"
+      ],
+      "confidence": 82,
+      "pattern": "[url:value = 'https://viper-update739.biz/update/check?session=lKbumQab']",
+      "name": "Malicious URL - Qbot",
+      "description": "URL serving Qbot payload attributed to DarkHydrus campaign.",
+      "kill_chain_phases": [
+        {
+          "kill_chain_name": "lockheed-martin-cyber-kill-chain",
+          "phase_name": "delivery"
+        },
+        {
+          "kill_chain_name": "lockheed-martin-cyber-kill-chain",
+          "phase_name": "exploitation"
+        }
+      ]
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--9fdeb4f3-92e1-45a2-831c-420d05a9ad06",
+      "source": "STEELCAGE.AI",
+      "created": "2025-08-14T21:05:46.015940Z",
+      "modified": "2025-08-14T21:05:46.015940Z",
+      "valid_from": "2025-08-12T13:05:46.015940Z",
+      "pattern_type": "stix",
+      "labels": [
+        "malicious-activity"
+      ],
+      "confidence": 98,
+      "pattern": "[url:value = 'https://cobra-update360.info/log/send?id=y1APZBRk']",
+      "name": "Malicious URL - Emotet",
+      "description": "URL serving Emotet payload attributed to MuddyWater campaign.",
+      "kill_chain_phases": [
+        {
+          "kill_chain_name": "lockheed-martin-cyber-kill-chain",
+          "phase_name": "delivery"
+        },
+        {
+          "kill_chain_name": "lockheed-martin-cyber-kill-chain",
+          "phase_name": "exploitation"
+        }
+      ]
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--50197091-3625-4f7b-890a-4b7ef91f4105",
+      "source": "STEELCAGE.AI",
+      "created": "2025-08-14T21:05:46.015940Z",
+      "modified": "2025-08-14T21:05:46.015940Z",
+      "valid_from": "2025-08-12T13:05:46.015940Z",
+      "pattern_type": "stix",
+      "labels": [
+        "malicious-activity"
+      ],
+      "confidence": 67,
+      "pattern": "[ipv4-addr:value = '60.30.41.218']",
+      "name": "Malicious IP - Qbot C2",
+      "description": "IP address associated with Qbot activity attributed to threat actor: APT29.",
+      "kill_chain_phases": [
+        {
+          "kill_chain_name": "lockheed-martin-cyber-kill-chain",
+          "phase_name": "command-and-control"
+        }
+      ]
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--3cc2c97e-904e-40dc-a3a7-c828570ba9b1",
+      "source": "STEELCAGE.AI",
+      "created": "2025-08-14T21:05:46.015940Z",
+      "modified": "2025-08-14T21:05:46.015940Z",
+      "valid_from": "2025-08-12T13:05:46.015940Z",
+      "pattern_type": "stix",
+      "labels": [
+        "malicious-activity"
+      ],
+      "confidence": 79,
+      "pattern": "[file:hashes.MD5 = 'e779745a944c46bfa1d0930fe8906112']",
+      "name": "Malicious File Hash - Qbot",
+      "description": "MD5 hash of Qbot variant associated with Lazarus operations.",
+      "kill_chain_phases": [
+        {
+          "kill_chain_name": "lockheed-martin-cyber-kill-chain",
+          "phase_name": "weaponization"
+        },
+        {
+          "kill_chain_name": "lockheed-martin-cyber-kill-chain",
+          "phase_name": "delivery"
+        },
+        {
+          "kill_chain_name": "lockheed-martin-cyber-kill-chain",
+          "phase_name": "installation"
+        }
+      ]
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--63b4ad38-d29f-4f51-8b2f-d92417bf4146",
+      "source": "STEELCAGE.AI",
+      "created": "2025-08-14T21:05:46.015940Z",
+      "modified": "2025-08-14T21:05:46.015940Z",
+      "valid_from": "2025-08-12T13:05:46.015940Z",
+      "pattern_type": "stix",
+      "labels": [
+        "malicious-activity"
+      ],
+      "confidence": 67,
+      "pattern": "[ipv4-addr:value = '238.78.26.249']",
+      "name": "Malicious IP - Mimikatz C2",
+      "description": "IP address associated with Mimikatz activity attributed to threat actor: DarkHydrus.",
+      "kill_chain_phases": [
+        {
+          "kill_chain_name": "lockheed-martin-cyber-kill-chain",
+          "phase_name": "command-and-control"
+        }
+      ]
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--1726f4ed-97fb-4cd3-970f-a2e1f54d7b53",
+      "source": "STEELCAGE.AI",
+      "created": "2025-08-14T21:05:46.015940Z",
+      "modified": "2025-08-14T21:05:46.015940Z",
+      "valid_from": "2025-08-12T13:05:46.015940Z",
+      "pattern_type": "stix",
+      "labels": [
+        "malicious-activity"
+      ],
+      "confidence": 97,
+      "pattern": "[file:hashes.MD5 = 'a6d00b657cf347a197e381539ce2c134']",
+      "name": "Malicious File Hash - BloodHound",
+      "description": "MD5 hash of BloodHound variant associated with Lazarus operations.",
+      "kill_chain_phases": [
+        {
+          "kill_chain_name": "lockheed-martin-cyber-kill-chain",
+          "phase_name": "weaponization"
+        },
+        {
+          "kill_chain_name": "lockheed-martin-cyber-kill-chain",
+          "phase_name": "delivery"
+        },
+        {
+          "kill_chain_name": "lockheed-martin-cyber-kill-chain",
+          "phase_name": "installation"
+        }
+      ]
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--7653e41b-0719-4af1-81ef-a97f2dffa44c",
+      "source": "STEELCAGE.AI",
+      "created": "2025-08-14T21:05:46.015940Z",
+      "modified": "2025-08-14T21:05:46.015940Z",
+      "valid_from": "2025-08-12T13:05:46.015940Z",
+      "pattern_type": "stix",
+      "labels": [
+        "malicious-activity"
+      ],
+      "confidence": 60,
+      "pattern": "[ipv4-addr:value = '111.51.100.191']",
+      "name": "Malicious IP - BloodHound C2",
+      "description": "IP address associated with BloodHound activity attributed to threat actor: FIN7.",
+      "kill_chain_phases": [
+        {
+          "kill_chain_name": "lockheed-martin-cyber-kill-chain",
+          "phase_name": "command-and-control"
+        }
+      ]
+    },
+    {
+      "type": "attack-pattern",
+      "spec_version": "2.1",
+      "id": "attack-pattern--be44dc2d-ab5d-44ae-a412-280e2991ec72",
+      "created": "2025-08-14T21:05:46.015940Z",
+      "modified": "2025-08-14T21:05:46.015940Z",
+      "name": "Spearphishing Attachment",
+      "source": "STEELCAGE.AI",
+      "description": "Adversaries send spearphishing emails with malicious attachments",
+      "pattern": "[attack-pattern:name = 'Spearphishing Attachment']",
+      "pattern_type": "stix",
+      "valid_from": "2025-08-12T13:05:46.015940Z",
+      "kill_chain_phases": [
+        {
+          "kill_chain_name": "lockheed-martin-cyber-kill-chain",
+          "phase_name": "delivery"
+        }
+      ],
+      "external_references": [
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1566.001",
+          "url": "https://attack.mitre.org/techniques/T1566.001/"
+        }
+      ]
+    },
+    {
+      "type": "attack-pattern",
+      "spec_version": "2.1",
+      "id": "attack-pattern--4ce6ded0-1ad8-4675-b1be-30fd11b1db62",
+      "created": "2025-08-14T21:05:46.015940Z",
+      "modified": "2025-08-14T21:05:46.015940Z",
+      "name": "Command and Scripting Interpreter",
+      "source": "STEELCAGE.AI",
+      "description": "Abuse of command and script interpreters",
+      "pattern": "[attack-pattern:name = 'Command and Scripting Interpreter']",
+      "pattern_type": "stix",
+      "valid_from": "2025-08-12T13:05:46.015940Z",
+      "kill_chain_phases": [
+        {
+          "kill_chain_name": "lockheed-martin-cyber-kill-chain",
+          "phase_name": "exploitation"
+        },
+        {
+          "kill_chain_name": "lockheed-martin-cyber-kill-chain",
+          "phase_name": "installation"
+        }
+      ],
+      "external_references": [
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1059",
+          "url": "https://attack.mitre.org/techniques/T1059/"
+        }
+      ]
+    },
+    {
+      "type": "attack-pattern",
+      "spec_version": "2.1",
+      "id": "attack-pattern--e7a569b7-ac38-4ef2-9462-537df24d875e",
+      "created": "2025-08-14T21:05:46.015940Z",
+      "modified": "2025-08-14T21:05:46.015940Z",
+      "name": "Remote System Discovery",
+      "source": "STEELCAGE.AI",
+      "description": "Discovery of systems on the network",
+      "pattern": "[attack-pattern:name = 'Remote System Discovery']",
+      "pattern_type": "stix",
+      "valid_from": "2025-08-12T13:05:46.015940Z",
+      "kill_chain_phases": [
+        {
+          "kill_chain_name": "lockheed-martin-cyber-kill-chain",
+          "phase_name": "reconnaissance"
+        },
+        {
+          "kill_chain_name": "lockheed-martin-cyber-kill-chain",
+          "phase_name": "actions-on-objectives"
+        }
+      ],
+      "external_references": [
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1018",
+          "url": "https://attack.mitre.org/techniques/T1018/"
+        }
+      ]
+    },
+    {
+      "type": "attack-pattern",
+      "spec_version": "2.1",
+      "id": "attack-pattern--ea54e04f-3bc3-4ec0-ab27-d6fed186b581",
+      "created": "2025-08-14T21:05:46.015940Z",
+      "modified": "2025-08-14T21:05:46.015940Z",
+      "name": "Credential Dumping",
+      "source": "STEELCAGE.AI",
+      "description": "Dumping credentials to obtain account info",
+      "pattern": "[attack-pattern:name = 'Credential Dumping']",
+      "pattern_type": "stix",
+      "valid_from": "2025-08-12T13:05:46.015940Z",
+      "kill_chain_phases": [
+        {
+          "kill_chain_name": "lockheed-martin-cyber-kill-chain",
+          "phase_name": "actions-on-objectives"
+        }
+      ],
+      "external_references": [
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1003",
+          "url": "https://attack.mitre.org/techniques/T1003/"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--d18e309a-5bee-4187-b429-0542327e4023",
+      "created": "2025-08-14T21:05:46.015940Z",
+      "modified": "2025-08-14T21:05:46.015940Z",
+      "name": "Relationship: indicates",
+      "source": "STEELCAGE.AI",
+      "description": "Indicator relationship to attack pattern",
+      "pattern": "[relationship:type = 'indicates']",
+      "pattern_type": "stix",
+      "valid_from": "2025-08-12T13:05:46.015940Z",
+      "relationship_type": "indicates",
+      "source_ref": "indicator--b378393e-33af-42e0-bdbf-780548f1672d",
+      "target_ref": "attack-pattern--4ce6ded0-1ad8-4675-b1be-30fd11b1db62"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--0c2c3994-ab86-4ec6-b0a3-d6549900552f",
+      "created": "2025-08-14T21:05:46.015940Z",
+      "modified": "2025-08-14T21:05:46.015940Z",
+      "name": "Relationship: uses",
+      "source": "STEELCAGE.AI",
+      "description": "Indicator relationship to attack pattern",
+      "pattern": "[relationship:type = 'uses']",
+      "pattern_type": "stix",
+      "valid_from": "2025-08-12T13:05:46.015940Z",
+      "relationship_type": "uses",
+      "source_ref": "indicator--3cc2c97e-904e-40dc-a3a7-c828570ba9b1",
+      "target_ref": "attack-pattern--ea54e04f-3bc3-4ec0-ab27-d6fed186b581"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--dad07bd4-883e-443d-8290-43e12368b333",
+      "created": "2025-08-14T21:05:46.015940Z",
+      "modified": "2025-08-14T21:05:46.015940Z",
+      "name": "Relationship: indicates",
+      "source": "STEELCAGE.AI",
+      "description": "Indicator relationship to attack pattern",
+      "pattern": "[relationship:type = 'indicates']",
+      "pattern_type": "stix",
+      "valid_from": "2025-08-12T13:05:46.015940Z",
+      "relationship_type": "indicates",
+      "source_ref": "indicator--50197091-3625-4f7b-890a-4b7ef91f4105",
+      "target_ref": "attack-pattern--4ce6ded0-1ad8-4675-b1be-30fd11b1db62"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--d6a75d2a-1e2a-4ee6-9437-2d05a4e07440",
+      "created": "2025-08-14T21:05:46.015940Z",
+      "modified": "2025-08-14T21:05:46.015940Z",
+      "name": "Relationship: uses",
+      "source": "STEELCAGE.AI",
+      "description": "Indicator relationship to attack pattern",
+      "pattern": "[relationship:type = 'uses']",
+      "pattern_type": "stix",
+      "valid_from": "2025-08-12T13:05:46.015940Z",
+      "relationship_type": "uses",
+      "source_ref": "indicator--a4a0810b-db8d-4687-ac91-09d53d210175",
+      "target_ref": "attack-pattern--be44dc2d-ab5d-44ae-a412-280e2991ec72"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--46c144fa-7783-4c5f-a6b8-50b1eb359d41",
+      "created": "2025-08-14T21:05:46.015940Z",
+      "modified": "2025-08-14T21:05:46.015940Z",
+      "name": "Relationship: uses",
+      "source": "STEELCAGE.AI",
+      "description": "Indicator relationship to attack pattern",
+      "pattern": "[relationship:type = 'uses']",
+      "pattern_type": "stix",
+      "valid_from": "2025-08-12T13:05:46.015940Z",
+      "relationship_type": "uses",
+      "source_ref": "indicator--3b7c2672-5b7f-4992-8694-f31cc4414812",
+      "target_ref": "attack-pattern--e7a569b7-ac38-4ef2-9462-537df24d875e"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--a5e51b97-ac0d-4e24-8d2f-0c613fb9ffa5",
+      "created": "2025-08-14T21:05:46.015940Z",
+      "modified": "2025-08-14T21:05:46.015940Z",
+      "name": "Relationship: attributed-to",
+      "source": "STEELCAGE.AI",
+      "description": "Indicator attributed to threat actor group",
+      "pattern": "[relationship:type = 'attributed-to']",
+      "pattern_type": "stix",
+      "valid_from": "2025-08-12T13:05:46.015940Z",
+      "relationship_type": "attributed-to",
+      "source_ref": "indicator--50197091-3625-4f7b-890a-4b7ef91f4105",
+      "target_ref": "identity--511eeac0-a1b7-489c-af46-43650349d65f"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--4429ef54-6bf5-4758-97f5-70c9dc571462",
+      "created": "2025-08-14T21:05:46.015940Z",
+      "modified": "2025-08-14T21:05:46.015940Z",
+      "name": "Relationship: attributed-to",
+      "source": "STEELCAGE.AI",
+      "description": "Indicator attributed to threat actor group",
+      "pattern": "[relationship:type = 'attributed-to']",
+      "pattern_type": "stix",
+      "valid_from": "2025-08-12T13:05:46.015940Z",
+      "relationship_type": "attributed-to",
+      "source_ref": "indicator--f873b338-961e-4e93-9e7c-65c346dbb469",
+      "target_ref": "identity--1b74ef37-134b-4366-9beb-d7889496cdfb"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--21f4313f-f10d-4cac-855b-6724f5599833",
+      "created": "2025-08-14T21:05:46.015940Z",
+      "modified": "2025-08-14T21:05:46.015940Z",
+      "name": "Relationship: attributed-to",
+      "source": "STEELCAGE.AI",
+      "description": "Indicator attributed to threat actor group",
+      "pattern": "[relationship:type = 'attributed-to']",
+      "pattern_type": "stix",
+      "valid_from": "2025-08-12T13:05:46.015940Z",
+      "relationship_type": "attributed-to",
+      "source_ref": "indicator--3b7c2672-5b7f-4992-8694-f31cc4414812",
+      "target_ref": "identity--ff6b744c-2322-422d-9add-b5627a43dab8"
+    }
+  ]
+}
