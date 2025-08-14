@@ -1,2 +1,238 @@
-# Sentinel-TI-Upload-with-Mock-TI-API
-This proof of concept is a containerized solution that employs one container to act as STEELCAGE.AI X-GEN TI API responsible for generating synthetic TI indicators and the other container which 'GETs' indicators from SC.AI via API and then sends those Indicators to Sentinel via MSFT's Threat Intelligence Upload API (Preview)
+# TI Sync Service - Mock API to Microsoft Sentinel
+
+This solution fetches threat intelligence indicators from a Mock TI API and uploads them to Microsoft Sentinel using the TI Upload API (Preview).
+
+## Architecture
+
+```
+┌─────────────────┐      ┌──────────────────┐      ┌─────────────────┐
+│   Mock TI API   │─────▶│  TI Sync Service │─────▶│ Microsoft       │
+│ (Python/FastAPI)│      │   (PowerShell)   │      │ Sentinel        │
+└─────────────────┘      └──────────────────┘      └─────────────────┘
+   http://172.20.0.1   Invoke-TI2UploadAPI.ps1  TI Upload API
+```
+
+## Features
+
+- ✅ Fetches STIX 2.1 indicators from Mock TI API
+- ✅ Handles pagination (max 100 indicators per Sentinel upload)
+- ✅ Supports both single and continuous sync modes
+- ✅ Azure AD authentication with client credentials
+- ✅ Test mode for dry runs
+- ✅ Docker support for containerized deployment
+- ✅ Detailed logging and progress tracking
+
+## Prerequisites
+
+- PowerShell 5.1 or higher
+- Azure subscription with Microsoft Sentinel enabled
+- Azure AD App Registration with appropriate permissions
+- Mock TI API running and accessible
+- `.env` file with Azure credentials
+
+## Quick Start
+
+### 1. Configure Environment
+
+Ensure your `.env` file contains:
+
+```env
+# Azure Configuration
+AZURE_CLIENT_ID=your-client-id
+AZURE_CLIENT_SECRET=your-client-secret
+AZURE_TENANT_ID=your-tenant-id
+AZURE_WORKSPACE_ID=your-sentinel-workspace-id
+
+# Mock API Configuration (example & optional)
+API_KEYS=QUxMIFVSIEJBU0UgQU5EIEFQSSdTIEFSRSBCRUxPTkcgVE8gVVMh
+```
+
+### 2. Run Single Sync
+
+```powershell
+# Load the script
+. .\Invoke-TI2UploadAPI.ps1
+
+# Run single sync
+Invoke-TI2UploadAPI -ShowProgress
+```
+
+### 3. Run Continuous Sync
+
+```powershell
+# Start continuous sync (every 60 minutes)
+Start-TISyncFromMockAPI -IntervalMinutes 60
+```
+
+## Usage Examples
+
+### Basic Usage
+
+```powershell
+# Single upload with default settings
+Invoke-TI2UploadAPI
+
+# Single upload with custom Mock API URL
+Invoke-TI2UploadAPI -MockApiUrl "http://192.168.10.27" -ShowProgress
+
+# Test mode - fetch only, no upload
+Invoke-TI2UploadAPI -TestMode -SaveToFile
+```
+
+### Continuous Sync
+
+```powershell
+# Run continuous sync every 30 minutes
+Start-TISyncFromMockAPI -IntervalMinutes 30
+
+# Run once (useful for cron jobs)
+Start-TISyncFromMockAPI -RunOnce
+```
+
+### Using the Run Script
+
+```powershell
+# Single sync
+.\run.ps1 -Mode Single
+
+# Continuous sync every 30 minutes
+.\run.ps1 -Mode Continuous -IntervalMinutes 30
+
+# Test mode
+.\run.ps1 -Mode Test
+
+# Start Docker containers
+.\run.ps1 -Mode Docker
+```
+
+## Docker Deployment
+
+### Build and Run with Docker Compose
+
+```bash
+# Start both Mock API and Sync Service
+docker-compose up --build -d
+
+# View logs
+docker-compose logs -f
+docker-compose logs -f ti-sync-service
+
+# Stop services
+docker-compose down --rmi all -v
+```
+
+### Run Sync Service Only
+
+```bash
+# Build the image
+docker build -t ti-sync-service:latest .
+
+# Run container (mount .env file)
+docker run -d \
+  --name ti-sync \
+  -v $(pwd)/.env:/app/.env:ro \
+  -e INTERVAL_MINUTES=60 \
+  -e MOCK_API_URL=http://192.168.10.27 \
+  ti-sync-service:latest
+```
+
+## API Endpoints
+
+### Mock TI API
+
+- **Health Check**: `GET /healthz`
+- **Display API Endpoints**: `GET /routes`
+  
+- **Get Indicators**: `GET /api/v1/indicators`
+  - Headers: `X-API-Key: {api_key}`
+  - Response: `{ sourcesystem, stixobjects }`
+
+### Microsoft Sentinel TI Upload API
+
+- **Upload Endpoint**: `POST /workspaces/{workspaceId}/threat-intelligence-stix-objects:upload`
+- **API Version**: `2024-02-01-preview`
+- **Max Indicators**: 100 per request
+- **Documentation**: [Microsoft Learn](https://learn.microsoft.com/en-us/azure/sentinel/stix-objects-api)
+
+## Parameters
+
+### Invoke-TI2UploadAPI
+
+| Parameter | Description | Default |
+|-----------|-------------|---------|
+| `-EnvFile` | Path to .env file | `.\.env` |
+| `-MockApiUrl` | Mock TI API base URL | `http://192.168.10.27` |
+| `-ApiKey` | API key for Mock API | Read from .env |
+| `-MaxIndicatorsPerUpload` | Max indicators per batch | 100 |
+| `-ShowProgress` | Show detailed progress | False |
+| `-TestMode` | Dry run without upload | False |
+| `-SaveToFile` | Save fetched indicators | False |
+
+### Start-TISyncFromMockAPI
+
+| Parameter | Description | Default |
+|-----------|-------------|---------|
+| `-IntervalMinutes` | Sync interval in minutes | 60 |
+| `-RunOnce` | Run single sync only | False |
+| `-EnvFile` | Path to .env file | `.\.env` |
+| `-MockApiUrl` | Mock TI API base URL | `http://192.168.10.27` |
+
+## Troubleshooting
+
+### Common Issues
+
+1. **Authentication Failed**
+   - Verify Azure credentials in `.env`
+   - Check App Registration permissions
+   - Ensure Sentinel Contributor role is assigned
+
+2. **Mock API Connection Failed**
+   - Verify Mock API is running: `curl http://192.168.10.27/healthz`
+   - Check API key if authentication is enabled
+   - Verify network connectivity
+
+3. **Upload Failed with 400 Bad Request**
+   - Check indicator format (STIX 2.1 compliance)
+   - Verify max 100 indicators per batch
+   - Review Sentinel API documentation
+
+4. **Rate Limiting**
+   - Automatic 500ms delay between batches
+   - Adjust `IntervalMinutes` for continuous sync
+
+### Debug Mode
+
+```powershell
+# Enable verbose output
+$VerbosePreference = "Continue"
+Invoke-TI2UploadAPI -ShowProgress
+
+# Save indicators for inspection
+Invoke-TI2UploadAPI -TestMode -SaveToFile
+```
+
+## Security Considerations
+
+- Store `.env` file securely (not in version control)
+- Use managed identities in production (Azure)
+- Rotate API keys and client secrets regularly
+- Monitor upload logs for anomalies
+- Implement proper error handling and alerting
+
+## Performance
+
+- Mock API can generate 10-25 indicators per cycle
+- Sentinel accepts max 100 indicators per upload
+- Batching handles large indicator sets efficiently
+- Recommended sync interval: 30-60 minutes
+
+## License
+
+This is a demonstration/mock solution for educational purposes.
+
+## Support
+
+For issues related to:
+- Mock TI API: Check `generator.py` and FastAPI logs
+- Sync Service: Review PowerShell error messages
+- Sentinel API: Consult [Microsoft documentation](https://learn.microsoft.com/en-us/azure/sentinel/stix-objects-api)
