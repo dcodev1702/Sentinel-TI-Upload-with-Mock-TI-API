@@ -57,12 +57,6 @@ services:
     volumes:
       # Mount the .env file with Azure credentials (REQUIRED)
       - ./.env:/app/config/.env:ro
-      # Mount PowerShell modules (for development/updates)
-      #- ./Invoke-TI2UploadAPI.psm1:/app/modules/Invoke-TI2UploadAPI.psm1:ro
-      #- ./Start-TISyncFromMockAPI.psm1:/app/modules/Start-TISyncFromMockAPI.psm1:ro
-      #- ./TI-Sync-Driver.ps1:/app/TI-Sync-Driver.ps1:ro
-      # Output directory for saved JSON files (Test mode)
-      - ./output:/app/output
       # Logs directory (optional)
       - ./logs:/app/logs
     networks:
