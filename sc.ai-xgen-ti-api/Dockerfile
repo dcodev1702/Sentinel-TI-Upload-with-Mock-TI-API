@@ -3,7 +3,7 @@ FROM python:3.13.6-alpine3.22
 ENV PYTHONDONTWRITEBYTECODE=1 \
     PYTHONUNBUFFERED=1 \
     DATA_DIR=/app/data \
-    HOST=192.168.10.27 \
+    HOST=0.0.0.0 \
     PORT=8080 \
     WORKERS=1 \
     LOG_LEVEL=info \
