@@ -10,7 +10,7 @@ This solution fetches threat intelligence indicators from a Mock TI API and uplo
 │ (Python/FastAPI)│      │   (PowerShell)   │      │ Sentinel        │
 │                 │──2──▶│                  │      │                 │
 └─────────────────┘      └──────────────────┘      └─────────────────┘
-   http://172.20.0.1   Invoke-TI2UploadAPI.ps1  TI Upload API
+http://172.20.0.1       Invoke-TI2UploadAPI.ps1     Sentinel TI Upload API (preview)
 
 Flow:
 1. TI Sync Service request TI indicators from Mock TI API via API (top arrow)
