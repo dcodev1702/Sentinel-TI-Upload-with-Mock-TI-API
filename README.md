@@ -1,4 +1,4 @@
-# TI Sync Service - Mock API to Microsoft Sentinel
+# TI Sync Service - SC.AI X-GEN API <-> Microsoft Sentinel
 
 This solution fetches threat intelligence indicators from a Mock TI API and uploads them to Microsoft Sentinel using the TI Upload API (Preview).
 
