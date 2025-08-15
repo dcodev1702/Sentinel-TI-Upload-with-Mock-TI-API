@@ -79,13 +79,17 @@ Start-TISyncFromMockAPI -IntervalMinutes 60
 ```bash
 # Start both Mock API and Sync Service
 docker compose up --build -d
+```
 
+```bash
 # View logs
 docker compose logs -f
 docker compose logs -f ti-sync-service
-
+```
+```bash
 # Stop services
 docker compose down --rmi all -v
+docker system prune -f
 ```
 
 ### Continuous Sync
