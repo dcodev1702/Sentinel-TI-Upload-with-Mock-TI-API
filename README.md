@@ -2,7 +2,7 @@
 
 This solution fetches threat intelligence indicators from a Mock TI API and uploads them to Microsoft Sentinel using the TI Upload API (Preview).
 
-## Architecture
+## Architecture (containers & cloud)
 
 ```
 ┌─────────────────┐       ┌──────────────────┐       ┌─────────────────┐
@@ -10,12 +10,12 @@ This solution fetches threat intelligence indicators from a Mock TI API and uplo
 │ (Python/FastAPI)│       │   (PowerShell)   │       │ Sentinel        │
 │                 │──2──▶│                   │      │                 │
 └─────────────────┘       └──────────────────┘       └─────────────────┘
-http://172.20.0.1       Invoke-TI2UploadAPI.ps1     Sentinel TI Upload API (preview)
+http://172.20.0.1:8080    Invoke-TI2UploadAPI.ps1     Sentinel TI Upload API (preview)
 
 Flow:
-1. TI Sync Service request TI indicators from Mock TI API via API (top arrow)
-2. Mock TI API responds with TI indicators (json:stixobjects[]) (bottom arrow)
-3. TI Sync Service uploads indicators (stixobjects[]) to Microsoft Sentinel
+1. TI Sync Service request TI indicators from Mock TI API via API (1)
+2. Mock TI API responds with TI indicators (json:stixobjects[]) (2)
+3. TI Sync Service uploads indicators (stixobjects[]) to Microsoft Sentinel (3)
 ```
 
 ## Features
@@ -30,6 +30,7 @@ Flow:
 
 ## Prerequisites
 
+- [Docker](https://www.docker.com/)
 - PowerShell 5.1 or higher
 - Azure subscription with Microsoft Sentinel enabled
 - Azure AD App Registration with appropriate permissions
@@ -49,7 +50,7 @@ AZURE_CLIENT_SECRET=your-client-secret
 AZURE_TENANT_ID=your-tenant-id
 AZURE_WORKSPACE_ID=your-sentinel-workspace-id
 
-# Mock API Configuration (example & optional)
+# Mock API Configuration (example & optional - perhaps even b64 decode it ;)
 API_KEYS=QUxMIFVSIEJBU0UgQU5EIEFQSSdTIEFSRSBCRUxPTkcgVE8gVVMh
 ```
 
@@ -72,17 +73,19 @@ Start-TISyncFromMockAPI -IntervalMinutes 60
 
 ## Usage Examples
 
-### Basic Usage
+### Preferred and optimized method
+### Build and Run with Docker Compose
 
-```powershell
-# Single upload with default settings
-Invoke-TI2UploadAPI
+```bash
+# Start both Mock API and Sync Service
+docker compose up --build -d
 
-# Single upload with custom Mock API URL
-Invoke-TI2UploadAPI -MockApiUrl "http://192.168.10.27" -ShowProgress
+# View logs
+docker compose logs -f
+docker compose logs -f ti-sync-service
 
-# Test mode - fetch only, no upload
-Invoke-TI2UploadAPI -TestMode -SaveToFile
+# Stop services
+docker compose down --rmi all -v
 ```
 
 ### Continuous Sync
@@ -112,20 +115,6 @@ Start-TISyncFromMockAPI -RunOnce
 ```
 
 ## Docker Deployment
-
-### Build and Run with Docker Compose
-
-```bash
-# Start both Mock API and Sync Service
-docker-compose up --build -d
-
-# View logs
-docker-compose logs -f
-docker-compose logs -f ti-sync-service
-
-# Stop services
-docker-compose down --rmi all -v
-```
 
 ### Run Sync Service Only
 
