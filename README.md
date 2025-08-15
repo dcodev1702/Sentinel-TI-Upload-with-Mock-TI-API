@@ -55,17 +55,7 @@ AZURE_WORKSPACE_ID=your-sentinel-workspace-id
 API_KEYS=QUxMIFVSIEJBU0UgQU5EIEFQSSdTIEFSRSBCRUxPTkcgVE8gVVMh
 ```
 
-### 2. Run Single Sync
-
-```powershell
-# Load the script
-. .\Invoke-TI2UploadAPI.ps1
-
-# Run single sync
-Invoke-TI2UploadAPI -ShowProgress
-```
-
-### 3. Run Continuous Sync
+### 2. Run Continuous Sync
 
 ```powershell
 # Start continuous sync (every 60 minutes)
@@ -132,7 +122,7 @@ docker run -d \
   --name ti-sync \
   -v $(pwd)/.env:/app/.env:ro \
   -e INTERVAL_MINUTES=60 \
-  -e MOCK_API_URL=http://192.168.10.27 \
+  -e MOCK_API_URL=http://192.168.10.27:8080 \
   ti-sync-service:latest
 ```
 
@@ -145,7 +135,7 @@ docker run -d \
   
 - **Get Indicators**: `GET /api/v1/indicators`
   - Headers: `X-API-Key: {api_key}`
-  - Response: `{ sourcesystem, stixobjects }`
+  - Response: `{ sourcesystem, stixobjects[] }`
 
 ### Microsoft Sentinel TI Upload API
 
@@ -161,7 +151,7 @@ docker run -d \
 | Parameter | Description | Default |
 |-----------|-------------|---------|
 | `-EnvFile` | Path to .env file | `.\.env` |
-| `-MockApiUrl` | Mock TI API base URL | `http://192.168.10.27` |
+| `-MockApiUrl` | Mock TI API base URL | `http://192.168.10.27:8080` |
 | `-ApiKey` | API key for Mock API | Read from .env |
 | `-MaxIndicatorsPerUpload` | Max indicators per batch | 100 |
 | `-ShowProgress` | Show detailed progress | False |
@@ -175,7 +165,7 @@ docker run -d \
 | `-IntervalMinutes` | Sync interval in minutes | 60 |
 | `-RunOnce` | Run single sync only | False |
 | `-EnvFile` | Path to .env file | `.\.env` |
-| `-MockApiUrl` | Mock TI API base URL | `http://192.168.10.27` |
+| `-MockApiUrl` | Mock TI API base URL | `http://192.168.10.27:8080` |
 
 ## Troubleshooting
 
@@ -187,7 +177,7 @@ docker run -d \
    - Ensure Sentinel Contributor role is assigned
 
 2. **Mock API Connection Failed**
-   - Verify Mock API is running: `curl http://192.168.10.27/healthz`
+   - Verify Mock API is running: `curl http://192.168.10.27:8080/healthz`
    - Check API key if authentication is enabled
    - Verify network connectivity
 
