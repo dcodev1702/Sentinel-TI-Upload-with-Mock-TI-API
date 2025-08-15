@@ -7,8 +7,8 @@ This solution fetches threat intelligence indicators from a Mock TI API and uplo
 ```
      container                  container                   cloud
 ┌─────────────────┐       ┌──────────────────┐       ┌─────────────────┐
-│   Mock TI API   │◀──1──│  TI Sync Service  │──3──▶│ Microsoft       │
-│ (Python/FastAPI)│       │   (PowerShell)   │       │ Sentinel        │
+│   Mock TI API   │◀──1──│  TI Sync Service  │──3──▶│    Microsoft    │
+│ (Python/FastAPI)│       │   (PowerShell)   │       │    Sentinel     │
 │                 │──2──▶│                   │      │                 │
 └─────────────────┘       └──────────────────┘       └─────────────────┘
 http://172.20.0.1:8080    Invoke-TI2UploadAPI.ps1     Sentinel TI Upload API (preview)
