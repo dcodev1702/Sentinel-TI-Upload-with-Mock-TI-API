@@ -5,6 +5,7 @@ This solution fetches threat intelligence indicators from a Mock TI API and uplo
 ## Architecture (containers & cloud)
 
 ```
+     container                  container                   cloud
 ┌─────────────────┐       ┌──────────────────┐       ┌─────────────────┐
 │   Mock TI API   │◀──1──│  TI Sync Service  │──3──▶│ Microsoft       │
 │ (Python/FastAPI)│       │   (PowerShell)   │       │ Sentinel        │
