@@ -69,7 +69,7 @@ services:
         condition: service_healthy
     restart: unless-stopped
     healthcheck:
-      test: ["CMD", "curl", "-f", "${MOCK_API_URL}/healthz"]
+      test: ["CMD-SHELL", "curl -fsS $${MOCK_API_URL}/healthz || exit 1"]
       interval: 6m
       timeout: 20s
       retries: 3
