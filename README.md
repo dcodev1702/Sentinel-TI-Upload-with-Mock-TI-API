@@ -61,13 +61,6 @@ AZURE_WORKSPACE_ID=your-sentinel-workspace-id
 API_KEYS=QUxMIFVSIEJBU0UgQU5EIEFQSSdTIEFSRSBCRUxPTkcgVE8gVVMh
 ```
 
-### 2. Run Continuous Sync
-
-```powershell
-# Start continuous sync (every 60 minutes)
-Start-TISyncFromMockAPI -IntervalMinutes 60
-```
-
 ## Usage Examples
 
 ### Preferred and optimized method
