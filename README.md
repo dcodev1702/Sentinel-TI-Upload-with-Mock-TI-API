@@ -150,7 +150,7 @@ docker run -d \
 | Parameter | Description | Default |
 |-----------|-------------|---------|
 | `-EnvFile` | Path to .env file | `.\.env` |
-| `-MockApiUrl` | Mock TI API base URL | `http://192.168.10.27:8080` |
+| `-MockApiUrl` | Mock TI API base URL | `http://172.18.0.2:8080` |
 | `-ApiKey` | API key for Mock API | Read from .env |
 | `-MaxIndicatorsPerUpload` | Max indicators per batch | 100 |
 | `-ShowProgress` | Show detailed progress | False |
