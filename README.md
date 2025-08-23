@@ -11,12 +11,12 @@ This solution fetches threat intelligence indicators from a Mock TI API and uplo
 │ (Python/FastAPI)│       │   (PowerShell)   │       │    Sentinel     │
 │                 │──2──▶│                   │      │                 │
 └─────────────────┘       └──────────────────┘       └─────────────────┘
-http://172.18.0.1:8080    Invoke-TI2UploadAPI.ps1     Sentinel TI Upload API (preview)
+http://172.18.0.2:8080    Invoke-TI2UploadAPI.ps1     Sentinel TI Upload API (preview)
 
     [SC.AI X-GEN API ENDPOINTS NETWORK]
-172.18.0.1/24 <-- INTERNAL --> 172.18.0.1/24
+172.18.0.2/24 <-- INTERNAL --> 172.18.0.3/24
                      [172.18 cannot talk 172.20]
-                               172.20.0.1/24 <-- PUBLIC --> 0.0.0.0
+                               172.20.0.2/24 <-- PUBLIC --> 0.0.0.0
                                 [MICROSOFT SENTINEL TI UPLOAD API]
 
 Flow:
