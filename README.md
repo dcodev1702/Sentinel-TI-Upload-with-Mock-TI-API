@@ -26,7 +26,7 @@ graph LR
     style C fill:#fff4e1
 ```
 
-```
+```python
      container                  container                   cloud
 ┌─────────────────┐       ┌──────────────────┐       ┌─────────────────┐
 │   Mock TI API   │◀──1──│  TI Sync Service  │──3──▶│    Microsoft    │
