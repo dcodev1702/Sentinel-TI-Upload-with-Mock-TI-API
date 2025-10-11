@@ -27,20 +27,6 @@ graph LR
 ```
 
 ```python
-     container                  container                   cloud
-┌─────────────────┐       ┌──────────────────┐       ┌─────────────────┐
-│   Mock TI API   │◀──1──│  TI Sync Service  │──3──▶│    Microsoft    │
-│ (Python/FastAPI)│       │   (PowerShell)   │       │    Sentinel     │
-│                 │──2──▶│                   │      │                 │
-└─────────────────┘       └──────────────────┘       └─────────────────┘
-http://172.18.0.2:8080    Invoke-TI2UploadAPI.ps1     Sentinel TI Upload API (preview)
-
-    [SC.AI X-GEN API ENDPOINTS NETWORK]
-172.18.0.2/24 <-- INTERNAL --> 172.18.0.3/24
-                     [172.18 cannot talk 172.20]
-                               172.20.0.2/24 <-- PUBLIC --> 0.0.0.0
-                                [MICROSOFT SENTINEL TI UPLOAD API]
-
 Flow:
 1. TI Sync Service request TI indicators from Mock TI API via API (1)
 2. Mock TI API responds with TI indicators (json:stixobjects[]) (2)
