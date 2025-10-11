@@ -21,9 +21,9 @@ graph LR
     A -->|2. Respond with TI indicators<br/>json:stixobjects| B
     B -->|3. Upload indicators<br/>stixobjects arary| C
     
-    style A fill:#e1f5ff
-    style B fill:#e1f5ff
-    style C fill:#fff4e1
+    style A fill:#2d2d2d,stroke:#ff9933,stroke-width:2px,color:#ff9933
+    style B fill:#2d2d2d,stroke:#ff9933,stroke-width:2px,color:#ff9933
+    style C fill:#2d2d2d,stroke:#ff9933,stroke-width:2px,color:#ff9933
 ```
 
 ```python
