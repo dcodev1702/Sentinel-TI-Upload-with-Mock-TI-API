@@ -6,12 +6,11 @@ This solution fetches threat intelligence indicators from a Mock TI API and uplo
 ```mermaid
 graph LR
     subgraph "SC.AI X-GEN CTI"
-        A[Mock TI API<br/>Python/FastAPI<br/>http://172.18.0.2:8080DOCKER CONTAINER]
+        A[Mock TI API<br/>Python/FastAPI<br/>http://172.18.0.2:8080<br/>Docker Container]
     end
     
     subgraph "Sentinel TI Upload API"
-        B[TI Sync Service<br/>PowerShell<br/>Invoke-TI2UploadAPI.ps1<br/>Backend: 172.18.0.3<br/>Frontend: 172.20.0.2]
-        B1[DOCKER CONTAINER]
+        B[TI Sync Service<br/>PowerShell<br/>Invoke-TI2UploadAPI.ps1<br/>Backend: 172.18.0.3<br/>Frontend: 172.20.0.2<br/>Docker Container]
     end
     
     subgraph "Public Internet (Cloud)"
