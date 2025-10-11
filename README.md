@@ -6,8 +6,7 @@ This solution fetches threat intelligence indicators from a Mock TI API and uplo
 ```mermaid
 graph LR
     subgraph "SC.AI X-GEN CTI"
-        A[Mock TI API<br/>Python/FastAPI<br/>http://172.18.0.2:8080]
-        A1[DOCKER CONTAINER]
+        A[Mock TI API<br/>Python/FastAPI<br/>http://172.18.0.2:8080DOCKER CONTAINER]
     end
     
     subgraph "Sentinel TI Upload API"
