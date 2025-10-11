@@ -16,9 +16,9 @@ graph LR
     subgraph "Public Internet (Cloud)"
         C[Microsoft Sentinel<br/>Sentinel TI Upload API]
     end
-    
-    B ==>|1. Request TI indicators| A
+
     A ==>|2. Respond with TI indicators<br/>json:stixobjects array| B
+    B ==>|1. Request TI indicators| A
     B ==>|3. Upload indicators<br/>json:stixobjects arary| C
     
     style A fill:#2d2d2d,stroke:#ff9933,stroke-width:2px,color:#ff9933
