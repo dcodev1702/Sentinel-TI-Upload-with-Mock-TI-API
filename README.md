@@ -22,8 +22,8 @@ graph LR
     B -->|3. Upload indicators<br/>stixobjects arary| C
     
     style A fill:#2d2d2d,stroke:#ff9933,stroke-width:2px,color:#ff9933
-    style B fill:#2d2d2d,stroke:#ff9933,stroke-width:2px,color:#ff9933
-    style C fill:#2d2d2d,stroke:#ff9933,stroke-width:2px,color:#ff9933
+    style B fill:#2d2d2d,stroke:#3399ff,stroke-width:2px,color:#3399ff
+    style C fill:#2d2d2d,stroke:#33ff33,stroke-width:2px,color:#33ff33
 ```
 
 ```python
