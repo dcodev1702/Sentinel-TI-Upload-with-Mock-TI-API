@@ -9,7 +9,7 @@ graph LR
         A[Mock TI API<br/>Python/FastAPI<br/>http://172.18.0.2:8080]
     end
     
-    subgraph "Container - Sentinel Threat Intelligence API (preview)"
+    subgraph "Container - Sentinel TI Upload API"
         B[TI Sync Service<br/>PowerShell<br/>Invoke-TI2UploadAPI.ps1<br/>Backend: 172.18.0.3<br/>Frontend: 172.20.0.2]
     end
     
