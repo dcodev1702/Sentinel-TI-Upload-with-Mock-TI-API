@@ -9,11 +9,11 @@ graph LR
         A[Mock TI API<br/>Python/FastAPI<br/>http://172.18.0.2:8080]
     end
     
-    subgraph "Container - 172.18.0.3/24"
-        B[TI Sync Service<br/>PowerShell<br/>Invoke-TI2UploadAPI.ps1]
+    subgraph "Container - 172.18.0.3/24 & 172.20.0.2/24"
+        B[TI Sync Service<br/>PowerShell<br/>Invoke-TI2UploadAPI.ps1<br/>Backend: 172.18.0.3<br/>Frontend: 172.20.0.2]
     end
     
-    subgraph "Cloud - 172.20.0.2/24"
+    subgraph "Cloud - 172.20.0.0/24"
         C[Microsoft Sentinel<br/>Sentinel TI Upload API]
     end
     
