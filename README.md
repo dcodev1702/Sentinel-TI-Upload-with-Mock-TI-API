@@ -19,7 +19,7 @@ graph LR
     
     B -->|1. Request TI indicators| A
     A -->|2. Respond with TI indicators<br/>json:stixobjects| B
-    B -->|3. Upload indicators<br/>stixobjects| C
+    B -->|3. Upload indicators<br/>stixobjects arary| C
     
     style A fill:#e1f5ff
     style B fill:#e1f5ff
