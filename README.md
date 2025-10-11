@@ -26,7 +26,7 @@ graph LR
     style C fill:#2d2d2d,stroke:#33ff33,stroke-width:2px,color:#33ff33
 ```
 
-```python
+```
 Flow:
 1. TI Sync Service request TI indicators from Mock TI API via API (1)
 2. Mock TI API responds with TI indicators (json:stixobjects[]) (2)
