@@ -13,7 +13,7 @@ graph LR
         B[TI Sync Service<br/>PowerShell<br/>Invoke-TI2UploadAPI.ps1<br/>Backend: 172.18.0.3<br/>Frontend: 172.20.0.2]
     end
     
-    subgraph "Cloud - 172.20.0.0/24"
+    subgraph "Public Internet (Cloud)"
         C[Microsoft Sentinel<br/>Sentinel TI Upload API]
     end
     
