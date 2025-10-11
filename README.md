@@ -3,6 +3,28 @@
 This solution fetches threat intelligence indicators from a Mock TI API and uploads them to Microsoft Sentinel using the TI Upload API (Preview).
 
 ## Architecture (containers & cloud)
+```mermaid
+graph LR
+    subgraph "Container - 172.18.0.2/24"
+        A[Mock TI API<br/>Python/FastAPI<br/>http://172.18.0.2:8080]
+    end
+    
+    subgraph "Container - 172.18.0.3/24"
+        B[TI Sync Service<br/>PowerShell<br/>Invoke-TI2UploadAPI.ps1]
+    end
+    
+    subgraph "Cloud - 172.20.0.2/24"
+        C[Microsoft Sentinel<br/>Sentinel TI Upload API]
+    end
+    
+    B -->|1. Request TI indicators| A
+    A -->|2. Respond with TI indicators<br/>json:stixobjects[]| B
+    B -->|3. Upload indicators<br/>stixobjects[]| C
+    
+    style A fill:#e1f5ff
+    style B fill:#e1f5ff
+    style C fill:#fff4e1
+```
 
 ```
      container                  container                   cloud
