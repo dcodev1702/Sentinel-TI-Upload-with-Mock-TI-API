@@ -1,6 +1,6 @@
 # TI Sync Service - SC.AI X-GEN API <-> Microsoft Sentinel
 
-This solution fetches threat intelligence indicators from a Mock TI API and uploads them to Microsoft Sentinel using the TI Upload API (Preview).
+This solution fetches threat intelligence indicators from a Mock TI API and uploads them to Microsoft Sentinel using the [TI Upload API (Preview)](https://learn.microsoft.com/en-us/azure/sentinel/stix-objects-api?source=recommendations). <br/>
 
 ## Architecture (containers & cloud)
 ```mermaid
