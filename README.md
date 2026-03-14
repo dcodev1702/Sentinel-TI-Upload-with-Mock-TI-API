@@ -2,7 +2,7 @@
 
 This solution fetches threat intelligence indicators from a Mock TI API and uploads them to Microsoft Sentinel using the [TI Upload API (Preview)](https://learn.microsoft.com/en-us/azure/sentinel/stix-objects-api?source=recommendations). <br/>
 
-## Architecture (containers & cloud)
+## Architecture (Containers & Cloud)
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="./images/architecture-dark_new.png">
   <source media="(prefers-color-scheme: light)" srcset="./images/architecture-light_new.png">
@@ -11,9 +11,9 @@ This solution fetches threat intelligence indicators from a Mock TI API and uplo
 
 ```env
 Flow:
-1. TI Sync Service request TI indicators from Mock TI API via API (1)
-2. Mock TI API responds with TI indicators (json:stixobjects[]) (2)
-3. TI Sync Service uploads indicators (stixobjects[]) to Microsoft Sentinel (3)
+1. TI Sync Service request TI indicators over private network from Mock TI API via API (1)
+2. Mock TI API responds with TI indicators over private network (json:stixobjects[]) (2)
+3. TI Sync Service uploads indicators (stixobjects[]) over public network to Microsoft Sentinel (3)
 ```
 
 ## Features
