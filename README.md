@@ -11,9 +11,9 @@ This solution fetches threat intelligence indicators from a Mock TI API and uplo
 
 ```env
 Flow:
-1. TI Sync Service request TI indicators over private network from Mock TI API via API (1)
-2. Mock TI API responds with TI indicators over private network (json:stixobjects[]) (2)
-3. TI Sync Service uploads indicators (stixobjects[]) over public network to Microsoft Sentinel (3)
+1. TI Sync Service request TI indicators via backend network from Mock TI API via API (1)
+2. Mock TI API responds with TI indicators via backend network (json:stixobjects[]) (2)
+3. TI Sync Service uploads indicators (stixobjects[]) via frontend network to Microsoft Sentinel (3)
 ```
 
 ## Features
