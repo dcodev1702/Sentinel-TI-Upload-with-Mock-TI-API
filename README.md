@@ -3,7 +3,11 @@
 This solution fetches threat intelligence indicators from a Mock TI API and uploads them to Microsoft Sentinel using the [TI Upload API (Preview)](https://learn.microsoft.com/en-us/azure/sentinel/stix-objects-api?source=recommendations). <br/>
 
 ## Architecture (containers & cloud)
-
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="./images/architecture-dark_new.png">
+  <source media="(prefers-color-scheme: light)" srcset="./images/architecture-light_new.png">
+  <img alt="Architecture Diagram" src="./images/architecture-dark.png">
+</picture>
 
 ```env
 Flow:
